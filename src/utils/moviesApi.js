@@ -31,3 +31,14 @@ export const headerWallpaper = async () => {
     return;
   }
 }
+
+
+export const trendingOne = async (category) => {
+  try {
+    const { data } = await tmdbApi.get(`/trending/${category}/day`);
+    return data.results;
+  } catch (error) {
+    console.error("Search Error:", error);
+    return;
+  }
+}

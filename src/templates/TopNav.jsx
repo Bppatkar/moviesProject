@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getMovies } from "../utils/SearchMovie";
+import { getMovies } from "../utils/moviesApi";
 import { Link } from "react-router-dom";
 
 const TopNav = () => {
