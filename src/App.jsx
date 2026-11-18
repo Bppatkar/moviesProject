@@ -1,14 +1,17 @@
-import React from 'react';
-import Home from './components/Home';
-import { Route, Routes } from 'react-router-dom';
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import Layout from "./components/Layout";
+import Home from "./components/Home";
+import Trending from "./components/Trending";
 
 const App = () => {
   return (
-    <div className="bg-[#1F1E24] w-screen h-screen flex">
-      <Routes>
+    <Routes>
+      <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
-      </Routes>
-    </div>
+        <Route path="/trending" element={<Trending />} />
+      </Route>
+    </Routes>
   );
 };
 

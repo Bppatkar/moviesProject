@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getMovies } from "../utils/moviesApi";
 import { Link } from "react-router-dom";
 
-const TopNav = () => {
+const TopNav = ({ isFloating = true }) => {
   const [query, setQuery] = useState("");
   const [searches, setSearches] = useState([]);
 
@@ -15,7 +15,7 @@ const TopNav = () => {
     const timer = setTimeout(async () => {
       const results = await getMovies(query);
       setSearches(
-        results.filter((item) => item.poster_path || item.profile_path),
+        results.filter((item) => item.poster_path || item.profile_path)
       );
     }, 500);
 
@@ -23,7 +23,13 @@ const TopNav = () => {
   }, [query]);
 
   return (
-    <div className="absolute top-0 left-0 z-30 flex h-[12vh] w-full items-center justify-start bg-linear-to-b from-black/80 via-black/40 to-transparent px-6 md:px-10">
+    <div
+      className={`${
+        isFloating
+          ? "absolute top-0 left-0 bg-linear-to-b from-black/80 via-black/40 to-transparent"
+          : "relative bg-transparent"
+      } z-30 flex h-[12vh] w-full items-center justify-start px-4 md:px-6`}
+    >
       <i className="ri-search-line text-2xl text-zinc-300 md:text-3xl"></i>
       <input
         onChange={(e) => setQuery(e.target.value)}
@@ -41,7 +47,7 @@ const TopNav = () => {
       )}
 
       {searches.length > 0 && (
-        <div className="absolute top-full left-6 z-50 max-h-[50vh] w-[80%] overflow-auto rounded-lg border border-zinc-700 bg-[#18181b]/95 shadow-2xl backdrop-blur-md md:left-16 md:w-[50%]">
+        <div className="absolute top-full left-4 z-50 max-h-[50vh] w-[80%] overflow-auto rounded-lg border border-zinc-700 bg-[#18181b]/95 shadow-2xl backdrop-blur-md md:left-12 md:w-[50%]">
           {searches.map((item) => {
             const isPerson = item.media_type === "person";
             const imagePath = isPerson ? item.profile_path : item.poster_path;

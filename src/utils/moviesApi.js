@@ -42,3 +42,14 @@ export const trendingOne = async (category) => {
     return;
   }
 }
+
+export const trendingWithCategoryandDuration = async (category =
+  "all", duration = "day") => {
+  try {
+    const { data } = await tmdbApi.get(`/trending/${category}/${duration}`);
+    return data.results || [];
+  } catch (error) {
+    console.error("Search Error:", error);
+    return;
+  }
+}
