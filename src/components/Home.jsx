@@ -26,6 +26,7 @@ const Home = () => {
 
   const GetTrending = async () => {
     try {
+      setIsTrending(null);
       const res = await trendingOne(category);
       setIsTrending(res);
     } catch (error) {

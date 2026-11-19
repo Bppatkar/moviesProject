@@ -29,7 +29,7 @@ const Trending = () => {
   }, [category, duration]);
 
   return trendingData ? (
-    <div className="min-h-screen w-screen bg-[#1f1e24] text-white px-6 py-4 md:px-10 overflow-x-hidden">
+    <div className="min-h-screen w-full overflow-x-hidden bg-[#1f1e24] px-6 py-4 text-white md:px-10">
       {/* Header Bar */}
       <div className="flex w-full flex-col justify-between gap-4 lg:flex-row lg:items-center">
         

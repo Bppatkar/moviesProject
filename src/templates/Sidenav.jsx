@@ -13,10 +13,10 @@ const Sidenav = () => {
       }}
       className="flex h-full min-h-screen w-full flex-col overflow-y-auto border-r border-[var(--color-border)] bg-[var(--color-surface)] p-6"
     >
-      <h1 className="flex items-center text-xl font-bold tracking-wide text-white">
-        <i className="ri-file-video-fill mr-2 text-lg text-[var(--color-primary)]"></i>
-        <span>Movies Hub</span>
-      </h1>
+      <Link to="/" className="flex items-center text-xl font-bold tracking-wide text-white group cursor-pointer">
+        <i className="ri-file-video-fill mr-2 text-lg text-[var(--color-primary)] transition-transform group-hover:scale-110"></i>
+        <span className="transition-colors group-hover:text-[#6556cd]">Movies Hub</span>
+      </Link>
 
       <nav className="mt-6 flex flex-col gap-1 text-zinc-400">
         <h2 className="mb-3 text-xs font-semibold tracking-widest text-zinc-500 uppercase">

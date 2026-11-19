@@ -53,3 +53,27 @@ export const trendingWithCategoryandDuration = async (category =
     return;
   }
 }
+
+export const popularWithCategory = async (category = "all") => {
+  try {
+    if (category === "all") {
+      const [movies, tvShows] = await Promise.all([
+        tmdbApi.get("/movie/popular"),
+        tmdbApi.get("/tv/popular"),
+      ]);
+      return [
+        ...movies.data.results.map((item) => ({ ...item, media_type: "movie" })),
+        ...tvShows.data.results.map((item) => ({ ...item, media_type: "tv" })),
+      ];
+    }
+
+    const { data } = await tmdbApi.get(`/${category}/popular`);
+    return (data.results || []).map((item) => ({
+      ...item,
+      media_type: category,
+    }));
+  } catch (error) {
+    console.error("TMDB Popular Error:", error.response?.data || error.message);
+    return [];
+  }
+};

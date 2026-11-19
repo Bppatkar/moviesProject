@@ -25,7 +25,12 @@ const Header = ({ data }) => {
         {data.overview
           ? data.overview.slice(0, 150) + "..."
           : "No description available"}{" "}
-        <Link className="font-semibold text-blue-400">more</Link>
+        <Link
+          to={`/${data.media_type || "movie"}/${data.id}`}
+          className="font-semibold text-blue-400"
+        >
+          more
+        </Link>
       </p>
 
       <p className="mt-3 flex items-center gap-4 text-xs text-zinc-200 md:text-sm">
